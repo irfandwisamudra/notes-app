@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes App</title>
 
+    <link rel="icon" href="./src/public/images/favicon.png" sizes="512x512" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
       :root {
         --primary-color: #004aad;
         --secondary-color: #3572ef;
-        --tertiary-color: #3abef9;
-        --quaternary-color: #a7e6ff;
+        --tertiary-color: #86b7fe;
+        --quaternary-color: aliceblue;
         --dark-color: #333;
         --light-color: #fff;
       }
@@ -26,11 +32,9 @@
         outline: none;
         list-style: none;
         text-decoration: none;
-        transition: all 0.2s linear;
       }
 
       html {
-        font-size: 67.5%;
         overflow-x: hidden;
         scroll-behavior: smooth;
       }
@@ -45,6 +49,7 @@
         max-width: 1320px;
       }
 
+      /* HEADER */
       .header-inner {
         position: relative;
       }
@@ -69,7 +74,7 @@
         transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
-        display: flex;
+        display: grid;
         align-items: center;
         text-align: center;
         backdrop-filter: blur(10px);
@@ -82,16 +87,208 @@
 
       .jumbotron h1 {
         margin: 10px 0;
-        font-size: 2.5em;
+        font-size: 2em;
         color: var(--primary-color);
       }
 
       .jumbotron h2 {
         margin: 10px 0;
+        font-size: 1.2em;
+        color: var(--secondary-color);
+      }
+
+      /* MAIN CONTENT */
+      .main-content {
+        background-color: var(--quaternary-color);
+      }
+
+      .content-inner {
+        padding: 2rem 0;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+      }
+
+      /* ADD NOTE */
+      .add-search-note {
+        display: grid;
+        gap: 1rem;
+        grid-template-rows: min-content;
+      }
+
+      .add-search-note h4 {
+        margin-bottom: 10px;
         font-size: 1.5em;
         color: var(--primary-color);
       }
 
+      .input-group {
+        margin-bottom: 10px;
+      }
+
+      .input-group textarea {
+        resize: vertical;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1em;
+        color: var(--dark-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        border: 1px solid var(--tertiary-color);
+      }
+
+      .form-control:focus {
+        border: 1px solid var(--tertiary-color);
+        box-shadow: 0 0 0 0.25rem rgba(0, 74, 173, 0.25);
+      }
+
+      .add-button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        cursor: pointer;
+      }
+
+      .add-button:hover {
+        background-color: blue;
+      }
+
+      .add-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 74, 173, 0.25);
+      }
+
+      .add-button i {
+        margin-left: 5px;
+      }
+
+      /* SEARCH NOTE */
+      #searchNote .input-group {
+        display: grid;
+        grid-template-columns: 1fr min-content;
+      }
+
+      #searchNoteTitle {
+        border-radius: 5px 0 0 5px;
+        padding: 10px;
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        border: 1px solid var(--tertiary-color);
+      }
+
+      #searchNoteTitle:focus {
+        border: 1px solid var(--tertiary-color);
+        box-shadow: 0 0 0 0.25rem rgba(0, 74, 173, 0.25);
+      }
+
+      .search-button {
+        padding: 10px;
+        border-radius: 0 5px 5px 0;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        cursor: pointer;
+      }
+
+      .search-button:hover {
+        background-color: blue;
+      }
+
+      .search-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 74, 173, 0.25);
+      }
+
+      /* LIST NOTE */
+      .list-note h4 {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+        color: var(--primary-color);
+      }
+
+      #listNote {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .note-item {
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: var(--light-color);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .note-item h5 {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: var(--secondary-color);
+      }
+
+      .note-item p {
+        margin-bottom: 10px;
+        font-size: 1em;
+        color: var(--dark-color);
+      }
+
+      .note-item small {
+        font-size: 0.8em;
+        color: var(--dark-color);
+      }
+
+      /* FOOTER */
+      footer {
+        background-color: var(--tertiary-color);
+        color: var(--light-color);
+        border-top: 2px solid var(--primary-color);
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1fr min-content;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .footer-inner .copyright a {
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        align-items: center;
+        color: var(--primary-color);
+      }
+
+      .footer-inner .copyright a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .footer-inner .copyright img {
+        height: 30px;
+      }
+
+      .footer-inner .social-media {
+        display: grid;
+        grid-template-columns: repeat(4, min-content);
+        gap: 1rem;
+      }
+
+      .footer-inner .social-media li a {
+        color: var(--primary-color);
+      }
+
+      .footer-inner .social-media li a:hover {
+        color: blue;
+      }
+
+      /* MEDIA QUERY */
       /* X-Large devices (large desktops, 1200px and up) */
       @media (max-width: 1400px) {
         .container {
@@ -104,12 +301,20 @@
         .container {
           max-width: 960px;
         }
+
+        .content-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        #listNote {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* Medium devices (tablets, 768px and up) */
       @media (max-width: 992px) {
         html {
-          font-size: 55%;
+          font-size: 80%;
         }
 
         .container {
@@ -127,11 +332,15 @@
       /* Extra-Small devices (portrait phones, less than 576px) */
       @media (max-width: 576px) {
         html {
-          font-size: 55%;
+          font-size: 75%;
         }
 
         .container {
           padding: 0 5%;
+        }
+
+        .content-inner {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -167,6 +376,111 @@
         </div>
       </div>
     </header>
+
+    <main class="main-content">
+      <div class="container">
+        <div class="content-inner">
+          <div class="add-search-note">
+            <section>
+              <h4>Tambahkan Catatan Baru</h4>
+              <form id="addNote">
+                <div class="input-group">
+                  <label class="form-label" for="inputNoteTitle">Judul</label>
+                  <input
+                    class="form-control"
+                    id="inputNoteTitle"
+                    type="text"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label class="form-label" for="inputNoteAuthor"
+                    >Deskripsi</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="inputNoteDescription"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="input-group">
+                  <button class="add-button" type="submit">
+                    Tambahkan Catatan
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                  </button>
+                </div>
+              </form>
+            </section>
+            <section>
+              <h4>Cari Catatan</h4>
+              <form id="searchNote">
+                <label class="form-label" for="searchNoteTitle">Judul</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    id="searchNoteTitle"
+                    type="text"
+                    autocomplete="off"
+                    required
+                  />
+                  <button class="search-button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+          <!-- List Note -->
+          <div class="list-note">
+            <section>
+              <h4>Daftar Catatan</h4>
+              <div id="listNote"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="copyright">
+            <a href="/">
+              <img src="./src/public/images/logo.png" alt="Notes App" />
+              <span>&copy; Notes App</span>
+            </a>
+          </div>
+
+          <ul class="social-media">
+            <li>
+              <a href="https://github.com/irfandwisamudra" target="_blank">
+                <i class="fab fa-github fa-lg"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/irfandwisamudra"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin fa-lg"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/irfandw.s" target="_blank">
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/IrfanDwiSamudra" target="_blank">
+                <i class="fab fa-twitter fa-lg"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </body>
 
   <script>
@@ -194,6 +508,138 @@
 
       showSlide(currentSlide);
       setInterval(nextSlide, 3000);
+
+      const notesData = [
+        {
+          id: "notes-jT-jjsyz61J8XKiI",
+          title: "Welcome to Notes, Dimas!",
+          body: "Welcome to Notes! This is your first note. You can archive it, delete it, or create new ones.",
+          createdAt: "2022-07-28T10:03:12.594Z",
+          archived: false,
+        },
+        {
+          id: "notes-aB-cdefg12345",
+          title: "Meeting Agenda",
+          body: "Discuss project updates and assign tasks for the upcoming week.",
+          createdAt: "2022-08-05T15:30:00.000Z",
+          archived: false,
+        },
+        {
+          id: "notes-XyZ-789012345",
+          title: "Shopping List",
+          body: "Milk, eggs, bread, fruits, and vegetables.",
+          createdAt: "2022-08-10T08:45:23.120Z",
+          archived: false,
+        },
+        {
+          id: "notes-1a-2b3c4d5e6f",
+          title: "Personal Goals",
+          body: "Read two books per month, exercise three times a week, learn a new language.",
+          createdAt: "2022-08-15T18:12:55.789Z",
+          archived: false,
+        },
+        {
+          id: "notes-LMN-456789",
+          title: "Recipe: Spaghetti Bolognese",
+          body: "Ingredients: ground beef, tomatoes, onions, garlic, pasta. Steps:...",
+          createdAt: "2022-08-20T12:30:40.200Z",
+          archived: false,
+        },
+        {
+          id: "notes-QwErTyUiOp",
+          title: "Workout Routine",
+          body: "Monday: Cardio, Tuesday: Upper body, Wednesday: Rest, Thursday: Lower body, Friday: Cardio.",
+          createdAt: "2022-08-25T09:15:17.890Z",
+          archived: false,
+        },
+        {
+          id: "notes-abcdef-987654",
+          title: "Book Recommendations",
+          body: "1. 'The Alchemist' by Paulo Coelho\n2. '1984' by George Orwell\n3. 'To Kill a Mockingbird' by Harper Lee",
+          createdAt: "2022-09-01T14:20:05.321Z",
+          archived: false,
+        },
+        {
+          id: "notes-zyxwv-54321",
+          title: "Daily Reflections",
+          body: "Write down three positive things that happened today and one thing to improve tomorrow.",
+          createdAt: "2022-09-07T20:40:30.150Z",
+          archived: false,
+        },
+        {
+          id: "notes-poiuyt-987654",
+          title: "Travel Bucket List",
+          body: "1. Paris, France\n2. Kyoto, Japan\n3. Santorini, Greece\n4. New York City, USA",
+          createdAt: "2022-09-15T11:55:44.678Z",
+          archived: false,
+        },
+        {
+          id: "notes-asdfgh-123456",
+          title: "Coding Projects",
+          body: "1. Build a personal website\n2. Create a mobile app\n3. Contribute to an open-source project",
+          createdAt: "2022-09-20T17:10:12.987Z",
+          archived: false,
+        },
+        {
+          id: "notes-5678-abcd-efgh",
+          title: "Project Deadline",
+          body: "Complete project tasks by the deadline on October 1st.",
+          createdAt: "2022-09-28T14:00:00.000Z",
+          archived: false,
+        },
+        {
+          id: "notes-9876-wxyz-1234",
+          title: "Health Checkup",
+          body: "Schedule a routine health checkup with the doctor.",
+          createdAt: "2022-10-05T09:30:45.600Z",
+          archived: false,
+        },
+        {
+          id: "notes-qwerty-8765-4321",
+          title: "Financial Goals",
+          body: "1. Create a monthly budget\n2. Save 20% of income\n3. Invest in a retirement fund.",
+          createdAt: "2022-10-12T12:15:30.890Z",
+          archived: false,
+        },
+        {
+          id: "notes-98765-54321-12345",
+          title: "Holiday Plans",
+          body: "Research and plan for the upcoming holiday destination.",
+          createdAt: "2022-10-20T16:45:00.000Z",
+          archived: false,
+        },
+        {
+          id: "notes-1234-abcd-5678",
+          title: "Language Learning",
+          body: "Practice Spanish vocabulary for 30 minutes every day.",
+          createdAt: "2022-10-28T08:00:20.120Z",
+          archived: false,
+        },
+      ];
+
+      const listNote = document.getElementById("listNote");
+
+      function renderNotes(notes) {
+        listNote.innerHTML = "";
+
+        // Mengurutkan catatan berdasarkan tanggal terbaru
+        const sortedNotes = notes.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        notes.forEach((note) => {
+          const noteItem = document.createElement("div");
+          noteItem.className = "note-item";
+          noteItem.innerHTML = `
+            <h5>${note.title}</h5>
+            <p>${note.body}</p>
+            <small>${new Date(note.createdAt).toLocaleString()}</small>
+          `;
+          listNote.appendChild(noteItem);
+        });
+      }
+
+      renderNotes(notesData);
     });
   </script>
 </html>
