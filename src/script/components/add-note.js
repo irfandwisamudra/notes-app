@@ -21,6 +21,7 @@ class AddNote extends HTMLElement {
 
       .add-note .input-group textarea {
         resize: vertical;
+        font-family: inherit;
       }
 
       .add-note .form-label {
@@ -144,8 +145,13 @@ class AddNote extends HTMLElement {
       };
 
       Notes.addNote(newNote);
-      alert("Catatan baru berhasil ditambahkan!");
-      this._shadowRoot.querySelector("#addNote").reset();
+
+      const eventCustom = new CustomEvent("notes-updated", {
+        detail: { notes: Notes.getAllNotes() },
+      });
+      document.dispatchEvent(eventCustom);
+
+      this._shadowRoot.getElementById("addNote").reset();
     }
   }
 }
