@@ -77,10 +77,6 @@ footer {
   .content-inner {
     grid-template-columns: 1fr 1fr;
   }
-
-  #listNote {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Medium devices (tablets, 768px and up) */

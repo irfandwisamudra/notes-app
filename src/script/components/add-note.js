@@ -10,13 +10,13 @@ class AddNote extends HTMLElement {
   _updateStyle() {
     this._style.textContent = `
       .add-note h4 {
-        margin-bottom: 10px;
+        margin: 0 0 10px 0;
         font-size: 1.5em;
         color: var(--primary-color);
       }
 
       .add-note .input-group {
-        margin-bottom: 10px;
+        margin: 0 0 10px 0;
       }
 
       .add-note .input-group textarea {
@@ -26,7 +26,7 @@ class AddNote extends HTMLElement {
 
       .add-note .form-label {
         display: block;
-        margin-bottom: 5px;
+        margin: 0 0 5px 0;
         font-size: 1em;
         color: var(--dark-color);
       }
@@ -66,7 +66,7 @@ class AddNote extends HTMLElement {
       }
 
       .add-note .add-button i {
-        margin-left: 5px;
+        margin: 0 0 0 5px;
       }
     `;
   }
@@ -145,6 +145,14 @@ class AddNote extends HTMLElement {
       };
 
       Notes.addNote(newNote);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Catatan berhasil ditambahkan!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
       const eventCustom = new CustomEvent("notes-updated", {
         detail: { notes: Notes.getAllNotes() },

@@ -10,14 +10,14 @@ class SearchNote extends HTMLElement {
   _updateStyle() {
     this._style.textContent = `
       .search-note h4 {
-        margin-bottom: 10px;
+        margin: 0 0 10px 0;
         font-size: 1.5em;
         color: var(--primary-color);
       }
 
       .search-note .form-label {
         display: block;
-        margin-bottom: 5px;
+        margin: 0 0 5px 0;
         font-size: 1em;
         color: var(--dark-color);
       }
