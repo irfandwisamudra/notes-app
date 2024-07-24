@@ -122,6 +122,10 @@ class Notes {
       return jammedNoteTitle.indexOf(jammedQuery) !== -1;
     });
   }
+
+  static addNote(note) {
+    notesData.push(note);
+  }
 }
 
 export default Notes;

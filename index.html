@@ -10,7 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="./src/styles/style.css" />
   </head>
   <body>
     <header>
@@ -21,39 +21,8 @@
       <div class="container">
         <div class="content-inner">
           <div class="add-search-note">
-            <section>
-              <h4>Tambahkan Catatan Baru</h4>
-              <form id="addNote">
-                <div class="input-group">
-                  <label class="form-label" for="inputNoteTitle">Judul</label>
-                  <input
-                    class="form-control"
-                    id="inputNoteTitle"
-                    type="text"
-                    autocomplete="off"
-                    required
-                  />
-                </div>
-                <div class="input-group">
-                  <label class="form-label" for="inputNoteAuthor"
-                    >Deskripsi</label
-                  >
-                  <textarea
-                    class="form-control"
-                    id="inputNoteDescription"
-                    rows="3"
-                    required
-                  ></textarea>
-                </div>
-                <div class="input-group">
-                  <button class="add-button" type="submit">
-                    Tambahkan Catatan
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                  </button>
-                </div>
-              </form>
-            </section>
-            <section>
+            <add-note></add-note>
+            <section class="search-note">
               <h4>Cari Catatan</h4>
               <form id="searchNote">
                 <label class="form-label" for="searchNoteTitle">Judul</label>
