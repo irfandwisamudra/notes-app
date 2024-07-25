@@ -5,6 +5,18 @@ class SearchNote extends HTMLElement {
     super();
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._style = document.createElement("style");
+    this._title = this.getAttribute("title") || "NEED SECTION TITLE";
+  }
+
+  static get observedAttributes() {
+    return ["title"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "title") {
+      this._title = newValue;
+      this.render();
+    }
   }
 
   _updateStyle() {
@@ -81,7 +93,7 @@ class SearchNote extends HTMLElement {
       />
 
       <section class="search-note">
-        <h4>Cari Catatan</h4>
+        <h4>${this._title}</h4>
         <form id="searchNote">
           <label class="form-label" for="searchNoteTitle">Judul</label>
           <div class="input-group">

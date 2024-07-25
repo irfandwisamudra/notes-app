@@ -5,6 +5,18 @@ class AddNote extends HTMLElement {
     super();
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._style = document.createElement("style");
+    this._title = this.getAttribute("title") || "NEED SECTION TITLE";
+  }
+
+  static get observedAttributes() {
+    return ["title"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "title") {
+      this._title = newValue;
+      this.render();
+    }
   }
 
   _updateStyle() {
@@ -91,7 +103,7 @@ class AddNote extends HTMLElement {
       />
 
       <section class="add-note">
-        <h4>Tambahkan Catatan Baru</h4>
+        <h4>${this._title}</h4>
         <form id="addNote">
           <div class="input-group">
             <label class="form-label" for="inputNoteTitle">Judul</label>

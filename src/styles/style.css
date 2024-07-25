@@ -27,6 +27,7 @@ html {
 
 body {
   background-color: var(--light-color);
+  padding: 0 !important;
 }
 
 .container {

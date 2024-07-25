@@ -6,6 +6,18 @@ class ListNote extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._style = document.createElement("style");
     this._notes = Notes.getAllNotes();
+    this._title = this.getAttribute("title") || "NEED SECTION TITLE";
+  }
+
+  static get observedAttributes() {
+    return ["title"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "title") {
+      this._title = newValue;
+      this.render();
+    }
   }
 
   _updateStyle() {
@@ -92,7 +104,7 @@ class ListNote extends HTMLElement {
     this._shadowRoot.innerHTML += `
       <div class="list-note">
         <section>
-          <h4>Daftar Catatan</h4>
+          <h4>${this._title}</h4>
           <div id="listNote"></div>
         </section>
       </div>
@@ -142,7 +154,8 @@ class ListNote extends HTMLElement {
     });
 
     document.addEventListener("notes-updated", (event) => {
-      this._renderNotes(event.detail.notes);
+      this._notes = event.detail.notes;
+      this._renderNotes(this._notes);
     });
   }
 
