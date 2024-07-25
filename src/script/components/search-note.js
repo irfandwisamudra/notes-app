@@ -32,6 +32,7 @@ class SearchNote extends HTMLElement {
         margin: 0 0 5px 0;
         font-size: 1em;
         color: var(--dark-color);
+        width: fit-content;
       }
 
       .search-note .input-group {
@@ -94,13 +95,15 @@ class SearchNote extends HTMLElement {
 
       <section class="search-note">
         <h4>${this._title}</h4>
-        <form id="searchNote">
+        <form id="searchNote" novalidate>
           <label class="form-label" for="searchNoteTitle">Judul</label>
           <div class="input-group">
             <input
               class="form-control"
               id="searchNoteTitle"
               type="text"
+              name="keyword"
+              enterkeyhint="search"
               autocomplete="off"
             />
             <button class="search-button" type="submit">
